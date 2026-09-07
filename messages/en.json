@@ -1,0 +1,121 @@
+{
+  "utilityBar": {
+    "phone": "+94 11 000 0000",
+    "email": "info@epd.gov.lk",
+    "siteMap": "Site Map"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "divisions": "Divisions",
+    "downloadArchive": "Download Archive",
+    "news": "News & Notices",
+    "bookshops": "Bookshops",
+    "contact": "Contact",
+    "publicToggle": "Public",
+    "staffToggle": "Staff"
+  },
+  "hero": {
+    "headline": "Educational Publications Department",
+    "subheadline": "Publishing quality educational resources for every Sri Lankan classroom",
+    "ctaPrimary": "Browse Book Archive",
+    "ctaSecondary": "About EPD"
+  },
+  "disclaimer": {
+    "text": "Frontend-only prototype — not a live data platform.",
+    "dismiss": "Dismiss"
+  },
+  "bookCategories": {
+    "title": "Book Categories",
+    "textbooks": "Textbooks",
+    "modules": "Modules",
+    "pirivena": "Pirivena Books",
+    "activityBooks": "Activity Books"
+  },
+  "quickServices": {
+    "title": "Quick Services",
+    "downloadBooks": "Download Books",
+    "searchArchive": "Search Archive",
+    "staffPortal": "Staff Portal",
+    "notices": "Notices",
+    "contact": "Contact",
+    "aboutEpd": "About EPD"
+  },
+  "about": {
+    "title": "About EPD",
+    "description": "The Educational Publications Department (EPD) is responsible for the development, printing, and distribution of textbooks and supplementary educational materials for schools across Sri Lanka.",
+    "vision": "Vision",
+    "visionText": "To be the foremost provider of quality educational publications in Sri Lanka.",
+    "mission": "Mission",
+    "missionText": "To develop, produce, and distribute accurate, accessible, and affordable educational resources for all students.",
+    "objectives": "Objectives",
+    "statsTitle": "By the Numbers"
+  },
+  "stats": {
+    "totalTitles": "Total Titles Published",
+    "totalViews": "Total Views",
+    "totalDownloads": "Total Downloads",
+    "todayViews": "Today's Views"
+  },
+  "downloadArchiveCta": {
+    "title": "Book Download Archive",
+    "description": "Browse and download textbooks, modules, and activity books free of charge.",
+    "button": "Go to Archive"
+  },
+  "commissionerGeneral": {
+    "title": "Commissioner General",
+    "telephone": "Telephone",
+    "fax": "Fax",
+    "email": "Email"
+  },
+  "commissioners": {
+    "title": "Commissioners"
+  },
+  "divisions": {
+    "title": "Our Divisions"
+  },
+  "newsNotices": {
+    "newsTitle": "Latest News",
+    "noticesTitle": "Special Notices"
+  },
+  "circulars": {
+    "title": "Circulars & Procurement"
+  },
+  "supplementaryBooks": {
+    "title": "Supplementary Books",
+    "author": "Author",
+    "price": "Price",
+    "printedYear": "Printed Year",
+    "availability": "Availability",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock"
+  },
+  "bookshops": {
+    "title": "Affiliated Bookshops",
+    "name": "Bookshop",
+    "address": "Address",
+    "contact": "Contact",
+    "email": "Email",
+    "map": "Map",
+    "availability": "Availability"
+  },
+  "partners": {
+    "title": "Partner Institutions"
+  },
+  "quickLinks": {
+    "title": "Quick Links"
+  },
+  "footer": {
+    "navTitle": "Site Navigation",
+    "mediaTitle": "Media Center",
+    "govBadge": "gov.lk",
+    "credit": "Created by Niklesh",
+    "supervisedBy": "Supervised by K.D. Lal Chandrasiri",
+    "madeWith": "Made with love for education",
+    "copyright": "© {year} Educational Publications Department, Sri Lanka"
+  },
+  "accessibility": {
+    "widgetLabel": "Accessibility options",
+    "scrollToTop": "Scroll to top"
+  }
+}

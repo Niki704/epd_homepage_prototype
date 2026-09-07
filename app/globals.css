@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary color carried over from the Download Archive prototype design system.
+     Keep in sync with tailwind.config.ts `brand` colors. */
+  --color-brand: #0a3d44;
+  --color-brand-dark: #072a2f;
+  --color-brand-light: #0f4d56;
+  --color-navy: #0b1f33;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #ffffff;
+  color: #111827;
+}

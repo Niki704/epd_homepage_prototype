@@ -1,0 +1,121 @@
+{
+  "utilityBar": {
+    "phone": "+94 11 000 0000",
+    "email": "info@epd.gov.lk",
+    "siteMap": "අඩවි සිතියම"
+  },
+  "nav": {
+    "home": "මුල් පිටුව",
+    "about": "අප ගැන",
+    "divisions": "අංශ",
+    "downloadArchive": "පොත් බාගත කිරීම්",
+    "news": "පුවත් සහ දැනුම්දීම්",
+    "bookshops": "පොත් වෙළඳසැල්",
+    "contact": "සම්බන්ධ වන්න",
+    "publicToggle": "මහජන",
+    "staffToggle": "කාර්ය මණ්ඩල"
+  },
+  "hero": {
+    "headline": "අධ්‍යාපන ප්‍රකාශන දෙපාර්තමේන්තුව",
+    "subheadline": "සෑම ශ්‍රී ලාංකික පන්ති කාමරයක් සඳහාම ගුණාත්මක අධ්‍යාපන සම්පත් ප්‍රකාශනය කිරීම",
+    "ctaPrimary": "පොත් ලේඛනාගාරය බලන්න",
+    "ctaSecondary": "EPD ගැන"
+  },
+  "disclaimer": {
+    "text": "මෙය front-end පමණක් ඇති නිරූපණයකි — සජීවී දත්ත වේදිකාවක් නොවේ.",
+    "dismiss": "වසන්න"
+  },
+  "bookCategories": {
+    "title": "පොත් වර්ග",
+    "textbooks": "පෙළ පොත්",
+    "modules": "මාපටිකා",
+    "pirivena": "පිරිවෙන් පොත්",
+    "activityBooks": "ක්‍රියාකාරකම් පොත්"
+  },
+  "quickServices": {
+    "title": "ඉක්මන් සේවා",
+    "downloadBooks": "පොත් බාගත කරන්න",
+    "searchArchive": "ලේඛනාගාරය සොයන්න",
+    "staffPortal": "කාර්ය මණ්ඩල පිවිසුම",
+    "notices": "දැනුම්දීම්",
+    "contact": "සම්බන්ධ වන්න",
+    "aboutEpd": "EPD ගැන"
+  },
+  "about": {
+    "title": "EPD ගැන",
+    "description": "අධ්‍යාපන ප්‍රකාශන දෙපාර්තමේන්තුව ශ්‍රී ලංකාව පුරා පාසල් සඳහා පෙළ පොත් සහ අතිරේක අධ්‍යාපන ද්‍රව්‍ය සංවර්ධනය, මුද්‍රණය සහ බෙදාහැරීම සඳහා වගකිව යුතුය.",
+    "vision": "දැක්ම",
+    "visionText": "ශ්‍රී ලංකාවේ ගුණාත්මක අධ්‍යාපන ප්‍රකාශන සපයන ප්‍රමුඛතම ආයතනය වීම.",
+    "mission": "මෙහෙවර",
+    "missionText": "සියලුම සිසුන් සඳහා නිවැරදි, ප්‍රවේශ විය හැකි සහ දැරිය හැකි මිලකට අධ්‍යාපන සම්පත් සංවර්ධනය, නිෂ්පාදනය සහ බෙදාහැරීම.",
+    "objectives": "අරමුණු",
+    "statsTitle": "සංඛ්‍යා ලේඛන"
+  },
+  "stats": {
+    "totalTitles": "ප්‍රකාශිත මුළු මාතෘකා ගණන",
+    "totalViews": "මුළු නැරඹීම්",
+    "totalDownloads": "මුළු බාගැනීම්",
+    "todayViews": "අද නැරඹීම්"
+  },
+  "downloadArchiveCta": {
+    "title": "පොත් බාගත කිරීමේ ලේඛනාගාරය",
+    "description": "පෙළ පොත්, මාපටිකා සහ ක්‍රියාකාරකම් පොත් නොමිලේ බලා බාගත කරන්න.",
+    "button": "ලේඛනාගාරයට යන්න"
+  },
+  "commissionerGeneral": {
+    "title": "කොමසාරිස් ජනරාල්",
+    "telephone": "දුරකථනය",
+    "fax": "ෆැක්ස්",
+    "email": "විද්‍යුත් තැපෑල"
+  },
+  "commissioners": {
+    "title": "කොමසාරිස්වරු"
+  },
+  "divisions": {
+    "title": "අපගේ අංශ"
+  },
+  "newsNotices": {
+    "newsTitle": "නවතම පුවත්",
+    "noticesTitle": "විශේෂ දැනුම්දීම්"
+  },
+  "circulars": {
+    "title": "චක්‍රලේඛ සහ ප්‍රසම්පාදන"
+  },
+  "supplementaryBooks": {
+    "title": "අතිරේක පොත්",
+    "author": "කර්තෘ",
+    "price": "මිල",
+    "printedYear": "මුද්‍රණය කළ වර්ෂය",
+    "availability": "තිබේදැයි",
+    "inStock": "තිබේ",
+    "outOfStock": "නැත"
+  },
+  "bookshops": {
+    "title": "අනුබද්ධ පොත් වෙළඳසැල්",
+    "name": "පොත් සාප්පුව",
+    "address": "ලිපිනය",
+    "contact": "සම්බන්ධතාවය",
+    "email": "විද්‍යුත් තැපෑල",
+    "map": "සිතියම",
+    "availability": "තිබේදැයි"
+  },
+  "partners": {
+    "title": "සහයෝගී ආයතන"
+  },
+  "quickLinks": {
+    "title": "ඉක්මන් සබැඳි"
+  },
+  "footer": {
+    "navTitle": "අඩවි සංචලනය",
+    "mediaTitle": "මාධ්‍ය මධ්‍යස්ථානය",
+    "govBadge": "gov.lk",
+    "credit": "නිර්මාණය: Niklesh",
+    "supervisedBy": "අධීක්ෂණය: K.D. Lal Chandrasiri",
+    "madeWith": "අධ්‍යාපනය සඳහා ආදරයෙන් සාදන ලදී",
+    "copyright": "© {year} අධ්‍යාපන ප්‍රකාශන දෙපාර්තමේන්තුව, ශ්‍රී ලංකාව"
+  },
+  "accessibility": {
+    "widgetLabel": "ප්‍රවේශ්‍යතා විකල්ප",
+    "scrollToTop": "ඉහළට යන්න"
+  }
+}
