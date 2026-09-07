@@ -32,15 +32,35 @@ export default function StatsCounter() {
   const [stats, setStats] = useState({ totalViews: 0, totalDownloads: 0, todayViews: 0 });
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    fetch("/api/counters/stats")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (data) setStats(data);
-        setLoaded(true);
-      })
-      .catch(() => setLoaded(true)); // fall back to zeros if Redis env vars aren't configured yet
-  }, []);
+    useEffect(() => {
+      // Increments the view counters, then reads back the fresh totals.
+      fetch("/api/counters/views", { method: "POST" })
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (data) {
+            setStats((prev) => ({
+              ...prev,
+              totalViews: data.totalViews,
+              todayViews: data.todayViews,
+            }));
+          }
+        })
+        .catch(() => {})
+        .finally(() => {
+          // Total Downloads isn't returned by the views endpoint, so fetch it separately.
+          fetch("/api/counters/stats")
+            .then((res) => (res.ok ? res.json() : null))
+            .then(
+              (data) =>
+                data &&
+                setStats((prev) => ({
+                  ...prev,
+                  totalDownloads: data.totalDownloads,
+                })),
+            )
+            .finally(() => setLoaded(true));
+        });
+    }, []);
 
   const items = [
     { label: "Total Titles Published", value: 1240 },

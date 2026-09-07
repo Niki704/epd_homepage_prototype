@@ -1,6 +1,6 @@
 {
   "name": "epd_homepage_prototype",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -11,6 +11,7 @@
   "dependencies": {
     "@upstash/redis": "^1.38.4",
     "framer-motion": "^11.11.0",
+    "lucide-react": "^1.41.0",
     "next": "^15.0.0",
     "next-intl": "^3.21.0",
     "next-themes": "^0.3.0",

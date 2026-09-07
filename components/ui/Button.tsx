@@ -21,7 +21,7 @@ export default function Button({ children, href, onClick, variant = "primary", c
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} onClick={onClick} className={classes}>
         {children}
       </Link>
     );

@@ -51,7 +51,11 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${notoLatin.variable} ${notoSinhala.variable} ${notoTamil.variable}`}>
+    <html
+      lang={locale}
+      className={`${notoLatin.variable} ${notoSinhala.variable} ${notoTamil.variable}`}
+      suppressHydrationWarning
+    >
       <body className="font-sans">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider>
