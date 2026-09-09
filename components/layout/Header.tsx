@@ -21,7 +21,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-brand-dark bg-brand sticky top-0 z-40 shadow-md">
+    <header className="bg-brand sticky top-0 z-40 shadow-md">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
         <Link href={`/${locale}`} className="flex items-center gap-3 shrink-0">
           {/* Reuses main-logo.png asset pattern from the Download Archive prototype. */}

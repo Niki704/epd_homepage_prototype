@@ -29,41 +29,45 @@ export default function StatsCounter() {
   const t = useTranslations("about");
   const s = useTranslations("stats");
 
-  const [stats, setStats] = useState({ totalViews: 0, totalDownloads: 0, todayViews: 0 });
+  const [stats, setStats] = useState({
+    totalViews: 0,
+    totalDownloads: 0,
+    todayViews: 0,
+  });
   const [loaded, setLoaded] = useState(false);
 
-    useEffect(() => {
-      // Increments the view counters, then reads back the fresh totals.
-      fetch("/api/counters/views", { method: "POST" })
-        .then((res) => (res.ok ? res.json() : null))
-        .then((data) => {
-          if (data) {
-            setStats((prev) => ({
-              ...prev,
-              totalViews: data.totalViews,
-              todayViews: data.todayViews,
-            }));
-          }
-        })
-        .catch(() => {})
-        .finally(() => {
-          // Total Downloads isn't returned by the views endpoint, so fetch it separately.
-          fetch("/api/counters/stats")
-            .then((res) => (res.ok ? res.json() : null))
-            .then(
-              (data) =>
-                data &&
-                setStats((prev) => ({
-                  ...prev,
-                  totalDownloads: data.totalDownloads,
-                })),
-            )
-            .finally(() => setLoaded(true));
-        });
-    }, []);
+  useEffect(() => {
+    // Increments the view counters, then reads back the fresh totals.
+    fetch("/api/counters/views", { method: "POST" })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data) {
+          setStats((prev) => ({
+            ...prev,
+            totalViews: data.totalViews,
+            todayViews: data.todayViews,
+          }));
+        }
+      })
+      .catch(() => {})
+      .finally(() => {
+        // Total Downloads isn't returned by the views endpoint, so fetch it separately.
+        fetch("/api/counters/stats")
+          .then((res) => (res.ok ? res.json() : null))
+          .then(
+            (data) =>
+              data &&
+              setStats((prev) => ({
+                ...prev,
+                totalDownloads: data.totalDownloads,
+              })),
+          )
+          .finally(() => setLoaded(true));
+      });
+  }, []);
 
   const items = [
-    { label: "Total Titles Published", value: 1240 },
+    { label: s("totalTitles"), value: 716 }, //Ensure to update this concurrently with the actual number of titles published in the download archive since the database is not counting it yet.
     { label: s("totalViews"), value: stats.totalViews },
     { label: s("totalDownloads"), value: stats.totalDownloads },
     { label: s("todayViews"), value: stats.todayViews },
@@ -72,7 +76,9 @@ export default function StatsCounter() {
   return (
     <section className="bg-brand text-white py-14">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-xl font-semibold mb-8 text-center">{t("statsTitle")}</h2>
+        <h2 className="text-xl font-semibold mb-8 text-center">
+          {t("statsTitle")}
+        </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {items.map((item) => (
             <motion.div
