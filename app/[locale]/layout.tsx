@@ -14,6 +14,13 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AccessibilityWidget from "@/components/layout/AccessibilityWidget";
 import ScrollToTopButton from "@/components/layout/ScrollToTopButton";
+import {
+  getAlternateLocaleUrls,
+  getLocaleSeo,
+  getLocaleUrl,
+  siteName,
+  siteUrl,
+} from "@/lib/seo";
 
 const notoLatin = Noto_Sans({
   subsets: ["latin"],
@@ -31,14 +38,75 @@ const notoTamil = Noto_Sans_Tamil({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Educational Publications Department - Sri Lanka",
-  description:
-    "Official website prototype of the Educational Publications Department (EPD), Sri Lanka.",
-};
-
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!locales.includes(locale as Locale)) notFound();
+
+  const typedLocale = locale as Locale;
+  const seo = getLocaleSeo(typedLocale);
+  const alternateLanguages = getAlternateLocaleUrls();
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: seo.title,
+    description: seo.description,
+    applicationName: siteName,
+    authors: [{ name: siteName }],
+    creator: siteName,
+    publisher: siteName,
+    category: "government",
+    alternates: {
+      canonical: getLocaleUrl(typedLocale),
+      languages: alternateLanguages,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+    openGraph: {
+      type: "website",
+      url: getLocaleUrl(typedLocale),
+      siteName,
+      title: seo.title,
+      description: seo.description,
+      locale: seo.ogLocale,
+      alternateLocale: locales
+        .filter((candidate) => candidate !== typedLocale)
+        .map((candidate) => getLocaleSeo(candidate).ogLocale),
+      images: [
+        {
+          url: "/images/hero/top-banner.png",
+          width: 1200,
+          height: 630,
+          alt: siteName,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo.title,
+      description: seo.description,
+      images: ["/images/hero/top-banner.png"],
+    },
+    icons: {
+      icon: "/favicon.ico",
+    },
+  };
 }
 
 export default async function LocaleLayout({

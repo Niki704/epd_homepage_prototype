@@ -16,6 +16,9 @@ import SupplementaryBookList from "@/components/sections/SupplementaryBookList";
 import BookshopTable from "@/components/sections/BookshopTable";
 import PartnerInstitutionsGrid from "@/components/sections/PartnerInstitutionsGrid";
 import QuickLinksSidebar from "@/components/sections/QuickLinksSidebar";
+import { getLocaleSeo, getLocaleUrl, siteName, siteUrl } from "@/lib/seo";
+import { locales, type Locale } from "@/i18n.config";
+import Script from "next/script";
 
 // Section order per 01-design.md §5 (v2, MOE-reference update).
 // Leadership sections (Commissioner General / Additional Commissioners) and
@@ -28,10 +31,57 @@ export default async function HomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const typedLocale = locale as Locale;
   setRequestLocale(locale);
+
+  const seo = getLocaleSeo(typedLocale);
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "GovernmentOrganization",
+        "@id": `${siteUrl}/#organization`,
+        name: siteName,
+        url: siteUrl,
+        logo: `${siteUrl}/images/main-logo.png`,
+        description: seo.description,
+        areaServed: {
+          "@type": "Country",
+          name: "Sri Lanka",
+        },
+        parentOrganization: {
+          "@type": "GovernmentOrganization",
+          name: "Ministry of Education, Sri Lanka",
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        url: siteUrl,
+        name: siteName,
+        publisher: { "@id": `${siteUrl}/#organization` },
+        inLanguage: locales,
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${getLocaleUrl(typedLocale)}/#webpage`,
+        url: getLocaleUrl(typedLocale),
+        name: seo.title,
+        description: seo.description,
+        isPartOf: { "@id": `${siteUrl}/#website` },
+        about: { "@id": `${siteUrl}/#organization` },
+        inLanguage: typedLocale,
+      },
+    ],
+  };
 
   return (
     <>
+      <Script
+        id={`epd-structured-data-${typedLocale}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <Hero />
       <DisclaimerBanner />
       <BookCategoryGrid />
