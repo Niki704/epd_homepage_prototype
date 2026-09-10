@@ -12,7 +12,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy text-white mt-16">
+    <footer id="contact" className="bg-navy text-white mt-16">
       <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
         <div>
           <h3 className="font-semibold text-base mb-3">
@@ -25,18 +25,42 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-3">{t("navTitle")}</h4>
           <ul className="space-y-2 text-white/70">
-            <li><Link href={`/${locale}#about`} className="hover:text-white">{nav("about")}</Link></li>
-            <li><Link href={`/${locale}#divisions`} className="hover:text-white">{nav("divisions")}</Link></li>
-            <li><Link href={`/${locale}#news`} className="hover:text-white">{nav("news")}</Link></li>
-            <li><Link href={`/${locale}#contact`} className="hover:text-white">{nav("contact")}</Link></li>
+            <li>
+              <Link href={`/${locale}#about`} className="hover:text-white">
+                {nav("about")}
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}#divisions`} className="hover:text-white">
+                {nav("divisions")}
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}#news`} className="hover:text-white">
+                {nav("news")}
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}#contact`} className="hover:text-white">
+                {nav("contact")}
+              </Link>
+            </li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-semibold mb-3">{t("mediaTitle")}</h4>
           <ul className="space-y-2 text-white/70">
-            <li><Link href={`/${locale}#news`} className="hover:text-white">{nav("news")}</Link></li>
-            <li><Link href={`/${locale}#bookshops`} className="hover:text-white">{nav("bookshops")}</Link></li>
+            <li>
+              <Link href={`/${locale}#news`} className="hover:text-white">
+                {nav("news")}
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}#bookshops`} className="hover:text-white">
+                {nav("bookshops")}
+              </Link>
+            </li>
           </ul>
           <span className="inline-block mt-4 text-xs bg-white/10 rounded px-2 py-1">
             {t("govBadge")}

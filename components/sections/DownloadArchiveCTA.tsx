@@ -1,5 +1,8 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
+import { ExternalLink } from "lucide-react";
 
 // Hero-style featured CTA card (NIE's Digital Library block pattern),
 // linking to the live, approved sibling prototype.
@@ -17,8 +20,14 @@ export default function DownloadArchiveCTA() {
           href="https://epd-download-prototype.vercel.app"
           variant="secondary"
           className="shrink-0"
+          onClick={() => {
+            fetch("/api/counters/downloads", { method: "POST" }).catch(
+              () => {},
+            );
+          }}
         >
           {t("button")}
+          <ExternalLink className="ml-1.5 h-4 w-4" />
         </Button>
       </div>
     </section>

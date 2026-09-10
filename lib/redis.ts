@@ -3,7 +3,10 @@ import { Redis } from "@upstash/redis";
 // The ONE real backend touchpoint in this project (see 03-architecture.md).
 // Everything else is hardcoded/static. Requires UPSTASH_REDIS_REST_URL and
 // UPSTASH_REDIS_REST_TOKEN in .env.local (never committed).
-export const redis = Redis.fromEnv();
+const hasRedisConfig = Boolean(
+  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN,
+);
+const redis = hasRedisConfig ? Redis.fromEnv() : null;
 
 const TOTAL_VIEWS_KEY = "total_views";
 const TOTAL_DOWNLOADS_KEY = "total_downloads";
@@ -14,7 +17,12 @@ function todayKey(): string {
 }
 
 /** Increments total + today's view counters. Call from a page-load API hit. */
-export async function incrementViews(): Promise<{ totalViews: number; todayViews: number }> {
+export async function incrementViews(): Promise<{
+  totalViews: number;
+  todayViews: number;
+}> {
+  if (!redis) return { totalViews: 0, todayViews: 0 };
+
   const [totalViews, todayViews] = await Promise.all([
     redis.incr(TOTAL_VIEWS_KEY),
     redis.incr(todayKey()),
@@ -23,7 +31,11 @@ export async function incrementViews(): Promise<{ totalViews: number; todayViews
 }
 
 /** Increments the total downloads counter. Call from a download-click action. */
-export async function incrementDownloads(): Promise<{ totalDownloads: number }> {
+export async function incrementDownloads(): Promise<{
+  totalDownloads: number;
+}> {
+  if (!redis) return { totalDownloads: 0 };
+
   const totalDownloads = await redis.incr(TOTAL_DOWNLOADS_KEY);
   return { totalDownloads };
 }
@@ -34,6 +46,10 @@ export async function getCounters(): Promise<{
   totalDownloads: number;
   todayViews: number;
 }> {
+  if (!redis) {
+    return { totalViews: 0, totalDownloads: 0, todayViews: 0 };
+  }
+
   const [totalViews, totalDownloads, todayViews] = await Promise.all([
     redis.get<number>(TOTAL_VIEWS_KEY),
     redis.get<number>(TOTAL_DOWNLOADS_KEY),
