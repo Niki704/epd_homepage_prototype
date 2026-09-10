@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import PublicStaffToggle from "@/components/ui/PublicStaffToggle";
 
 // Flat, max-2-level nav — MOE + Police.lk pattern (see 01-design.md §4).
 // Avoid MOHE's deep megamenu anti-pattern.
@@ -45,8 +44,6 @@ export default function Header() {
             </Link>
           ))}
         </nav>
-
-        <PublicStaffToggle />
       </div>
     </header>
   );

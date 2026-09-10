@@ -1,7 +1,7 @@
 import type { Locale } from "@/i18n.config";
 
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.epd.gov.lk"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://edupubgov.vercel.app/"
 ).replace(/\/$/, "");
 
 export const siteName = "Educational Publications Department";
