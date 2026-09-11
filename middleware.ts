@@ -8,8 +8,9 @@ const intlMiddleware = createMiddleware({
   localePrefix: "always", // /en/, /si/, /ta/ — each independently indexable for SEO
 });
 
-export default function middleware(request: NextRequest) {
-  const response = intlMiddleware(request);
+export default async function middleware(request: NextRequest) {
+  const response = await intlMiddleware(request);
+  if (!response) return;
 
   // Basic security headers (see 03-architecture.md — Security Basics).
   // No admin surface exists, so this is a lightweight baseline, not a
