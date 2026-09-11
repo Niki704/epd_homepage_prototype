@@ -41,7 +41,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="relative inline-block transition-transform duration-200 ease-out hover:scale-105 after:absolute after:inset-x-0 after:-bottom-1 after:h-[3px] after:origin-center after:scale-x-0 after:bg-[#73C2FB] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"
+              className="relative inline-block transition-transform duration-200 ease-out hover:scale-105 focus-visible:scale-105 after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:origin-center after:scale-x-0 after:bg-toputilbg after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"
             >
               {link.label}
             </Link>
