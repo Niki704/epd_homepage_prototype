@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 // Floating circular accessibility button, bottom-right (MOE pattern).
@@ -11,9 +12,15 @@ export default function AccessibilityWidget() {
     <button
       type="button"
       aria-label={t("widgetLabel")}
-      className="fixed bottom-24 right-5 z-50 h-12 w-12 rounded-full bg-brand text-white shadow-lg flex items-center justify-center hover:bg-brand-light transition-colors"
+      className="fixed bottom-5 right-5 z-50 flex h-5 w-5 items-center justify-center rounded-full sm:h-11 sm:w-11 border-2 border-brand/50 bg-transparent shadow-lg transition-colors hover:bg-slate-100"
     >
-      <span aria-hidden="true">♿</span>
+      <Image
+        src="/icons/accessibility_02.png"
+        alt="Accessibility_Options"
+        width={32}
+        height={32}
+        aria-hidden="true"
+      />
     </button>
   );
 }
