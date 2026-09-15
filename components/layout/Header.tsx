@@ -54,7 +54,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <span className="shrink-0 rounded bg-white/10 px-2 py-1 text-xs text-white/75">
+        <span className="shrink-0 rounded bg-white/10 px-2 py-1 text-xs text-accent-gold-light">
           {appVersion}
         </span>
       </div>

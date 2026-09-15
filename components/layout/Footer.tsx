@@ -1,5 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
+import packageJson from "@/package.json";
+
+const appVersion = `v${packageJson.version}`;
 
 // 3-column MOE-style footer (see 01-design.md §4/§5):
 // (1) logo + contact + socials, (2) Site Navigations, (3) Media Center + gov.lk badge.
@@ -18,8 +22,12 @@ export default function Footer() {
           <h3 className="font-semibold text-base mb-3">
             Educational Publications Department
           </h3>
-          <p className="text-white/70 mb-1">+94 11 000 0000</p>
-          <p className="text-white/70">info@epd.gov.lk</p>
+          <p className="text-white/70 mb-1">
+            Isurupaya, Baththaramulla, Sri Lanka
+          </p>
+          <p className="text-white/70 mb-1">+94 112 784 815</p>
+          <p className="text-white/70">epditunit@gmail.com</p>
+          {/* This email field is subject to change. */}
         </div>
 
         <div>
@@ -61,10 +69,29 @@ export default function Footer() {
                 {nav("bookshops")}
               </Link>
             </li>
+            <li>
+              <Link href={`/${locale}#afwebs`} className="hover:text-white">
+                {nav("afwebs")}
+              </Link>
+            </li>
           </ul>
-          <span className="inline-block mt-4 text-xs bg-white/10 rounded px-2 py-1">
-            {t("govBadge")}
-          </span>
+          <div className="mt-4 border-t border-white/10 pt-4 flex items-center gap-4">
+            <Image
+              src="/icons/gic_en-1.gif"
+              alt="Government Information Center"
+              width={168}
+              height={60}
+              unoptimized
+              className="h-8 w-auto object-contain"
+            />
+            <Image
+              src="/icons/lgovlk-1.png"
+              alt="Gov.lk"
+              width={102}
+              height={30}
+              className="h-6 w-auto object-contain"
+            />
+          </div>
         </div>
       </div>
 
@@ -78,15 +105,20 @@ export default function Footer() {
               href="https://github.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white"
+              className="hover:text-purple-400 transition-colors"
             >
               GitHub
             </a>
-            <span className="rounded bg-white/10 px-1.5 py-0.5">v1.00</span>
+            <span className="rounded text-accent-gold-light bg-white/10 px-1.5 py-0.5">
+              {appVersion}
+            </span>
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-4 pb-4 text-xs text-white/50">
-          {t("copyright", { year })} · {t("madeWith")}
+          {t("copyright", { year })}
+          <span className="text-white/40"> • </span>
+          {t("madeWith")}
+          <span className="text-purple-400"> ♥ </span>
         </div>
       </div>
     </footer>

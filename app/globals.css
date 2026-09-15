@@ -9,6 +9,9 @@
   --font-sans: var(--epd-font-latin), sans-serif;
   --font-sinhala: var(--epd-font-sinhala), sans-serif;
   --font-tamil: var(--epd-font-tamil), sans-serif;
+
+  --color-accent-gold-light: var(--color-accent-gold-light);
+  --color-accent-purple: var(--color-accent-purple);
 }
 
 :root {
@@ -18,6 +21,12 @@
   --color-brand-light: #0f4d56;
   --color-navy: #0b1f33;
   --color-toputilbg: #73c2fb;
+
+  /* Header-specific accents — lighter shades tuned for the dark banner
+     photo backdrop, distinct from the light-surface accent-gold/violet
+     used everywhere else on the white background. */
+  --color-accent-gold-light: #f2c14e; /* Version badge */
+  --color-accent-purple: #a855f7;
 }
 
 html,
