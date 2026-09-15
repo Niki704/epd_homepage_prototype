@@ -5,7 +5,7 @@
   --color-brand-dark: #072a2f;
   --color-brand-light: #0f4d56;
   --color-navy: #0b1f33;
-  --color-toputilbg: #73C2FB;
+  --color-toputilbg: #73c2fb;
   --font-sans: var(--epd-font-latin), sans-serif;
   --font-sinhala: var(--epd-font-sinhala), sans-serif;
   --font-tamil: var(--epd-font-tamil), sans-serif;
@@ -17,7 +17,7 @@
   --color-brand-dark: #072a2f;
   --color-brand-light: #0f4d56;
   --color-navy: #0b1f33;
-  --color-toputilbg: #73C2FB;
+  --color-toputilbg: #73c2fb;
 }
 
 html,
@@ -29,4 +29,29 @@ body {
 body {
   background-color: #ffffff;
   color: #111827;
+}
+
+.nav-link-fill {
+  font-family:
+    var(--epd-font-latin), var(--epd-font-sinhala), var(--epd-font-tamil),
+    sans-serif;
+  letter-spacing: 0.01em;
+  color: transparent;
+  background-image: linear-gradient(
+    to right,
+    var(--color-toputilbg) 50%,
+    #ffffff 50%
+  );
+  background-position: 100% 0;
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  transition:
+    background-position 300ms ease-out,
+    transform 500ms ease-out;
+}
+
+.nav-link-fill:hover,
+.nav-link-fill:focus-visible {
+  background-position: 0 0;
 }
