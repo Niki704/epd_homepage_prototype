@@ -1,10 +1,11 @@
 import { Redis } from "@upstash/redis";
+import { envServer } from "@/lib/env";
 
 // The ONE real backend touchpoint in this project (see 03-architecture.md).
 // Everything else is hardcoded/static. Requires UPSTASH_REDIS_REST_URL and
 // UPSTASH_REDIS_REST_TOKEN in .env.local (never committed).
 const hasRedisConfig = Boolean(
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN,
+  envServer.UPSTASH_REDIS_REST_URL && envServer.UPSTASH_REDIS_REST_TOKEN,
 );
 const redis = hasRedisConfig ? Redis.fromEnv() : null;
 
