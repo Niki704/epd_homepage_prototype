@@ -24,18 +24,18 @@ export default function TopUtilityBar() {
     <div className="bg-brand opacity-85 text-white text-sm">
       <div className="max-w-7xl mx-auto px-4 py-1.5 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <a href={`tel:${t("phone")}`} className="hover:underline">
+          <a href={`tel:${t("phone")}`} className="nav-link-underline">
             {t("phone")}
           </a>
           <a
             href={`mailto:${t("email")}`}
-            className="hidden sm:inline hover:underline"
+            className="nav-link-underline hidden sm:inline"
           >
             {t("email")}
           </a>
           <Link
             href={`/${locale}/sitemap`}
-            className="hidden sm:inline hover:underline"
+            className="nav-link-underline hidden sm:inline"
           >
             {t("siteMap")}
           </Link>
@@ -48,7 +48,7 @@ export default function TopUtilityBar() {
               className={
                 l === locale
                   ? "font-semibold underline"
-                  : "opacity-80 hover:opacity-100"
+                  : "nav-link-underline opacity-80 hover:opacity-100"
               }
             >
               {LOCALE_LABELS[l]}
