@@ -1,8 +1,7 @@
 import type { Locale } from "@/i18n.config";
+import { envClient } from "@/lib/env";
 
-export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://edupubgov.vercel.app/"
-).replace(/\/$/, "");
+export const siteUrl = envClient.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
 
 export const siteName = "Educational Publications Department";
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
@@ -20,9 +21,24 @@ export default function ScrollToTopButton() {
       type="button"
       aria-label={t("scrollToTop")}
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed bottom-5 right-5 z-50 h-12 w-12 rounded-full bg-navy text-white shadow-lg flex items-center justify-center hover:opacity-90 transition-opacity"
+      className="group fixed bottom-21 right-5 z-50 flex h-5 w-5 items-center justify-center rounded-full bg-navy shadow-lg transition-colors duration-200 hover:bg-[#c5d9f5] sm:h-11 sm:w-11"
     >
-      <span aria-hidden="true">↑</span>
+      <Image
+        src="/icons/up-arrow.png"
+        alt=""
+        width={20}
+        height={20}
+        aria-hidden="true"
+        className="transition-opacity duration-200 group-hover:opacity-0"
+      />
+      <Image
+        src="/icons/up-arrow-hover.png"
+        alt=""
+        width={20}
+        height={20}
+        aria-hidden="true"
+        className="absolute opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+      />
     </button>
   );
 }
