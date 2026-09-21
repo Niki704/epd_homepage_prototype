@@ -6,6 +6,12 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  webpack: (config) => {
+    config.resolve.extensionAlias = {
+      ".js": [".ts", ".tsx", ".js"],
+    };
+    return config;
+  },
   images: {
     // All images are served locally from /public per the architecture decision
     // (no cloud storage / remote image domains needed for the prototype).

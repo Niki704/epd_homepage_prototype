@@ -1,7 +1,8 @@
 {
   "name": "epd_homepage_prototype",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
