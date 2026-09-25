@@ -1,24 +1,17 @@
-import nextIntlMiddleware from "next-intl/middleware";
+import createMiddleware from "next-intl/middleware";
 import { locales, defaultLocale } from "./i18n.config.js";
 import { NextRequest } from "next/server";
-
-const createMiddleware =
-  (nextIntlMiddleware as unknown as { default?: typeof nextIntlMiddleware })
-    .default ?? nextIntlMiddleware;
 
 const intlMiddleware = createMiddleware({
   locales,
   defaultLocale,
-  localePrefix: "always", // /en/, /si/, /ta/ — each independently indexable for SEO
+  localePrefix: "always",
 });
 
-export default async function middleware(request: NextRequest) {
-  const response = await intlMiddleware(request);
+export default function middleware(request: NextRequest) {
+  const response = intlMiddleware(request);
   if (!response) return;
 
-  // Basic security headers (see 03-architecture.md — Security Basics).
-  // No admin surface exists, so this is a lightweight baseline, not a
-  // hardened production config.
   response.headers.set("X-Frame-Options", "SAMEORIGIN");
   response.headers.set("X-Content-Type-Options", "nosniff");
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
