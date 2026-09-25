@@ -1,6 +1,10 @@
-import createMiddleware from "next-intl/middleware";
+import nextIntlMiddleware from "next-intl/middleware";
 import { locales, defaultLocale } from "./i18n.config.js";
 import { NextRequest } from "next/server";
+
+const createMiddleware =
+  (nextIntlMiddleware as unknown as { default?: typeof nextIntlMiddleware })
+    .default ?? nextIntlMiddleware;
 
 const intlMiddleware = createMiddleware({
   locales,
