@@ -2,7 +2,6 @@
   "name": "epd_homepage_prototype",
   "version": "0.1.4",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -29,7 +28,7 @@
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^15.0.0",
+    "eslint-config-next": "^16.3.6",
     "postcss": "^8.4.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.6.0"

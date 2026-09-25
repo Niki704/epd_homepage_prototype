@@ -1,6 +1,6 @@
 import createMiddleware from "next-intl/middleware";
-import { locales, defaultLocale } from "./i18n.config.js";
-import { NextRequest } from "next/server";
+import { locales, defaultLocale } from "./i18n.config";
+import type { NextRequest } from "next/server";
 
 const intlMiddleware = createMiddleware({
   locales,
@@ -8,8 +8,8 @@ const intlMiddleware = createMiddleware({
   localePrefix: "always", // /en/, /si/, /ta/ — each independently indexable for SEO
 });
 
-export default async function middleware(request: NextRequest) {
-  const response = await intlMiddleware(request);
+export default function proxy(request: NextRequest) {
+  const response = intlMiddleware(request);
   if (!response) return;
 
   // Basic security headers (see 03-architecture.md — Security Basics).
