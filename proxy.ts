@@ -1,6 +1,6 @@
 import createMiddleware from "next-intl/middleware";
-import { locales, defaultLocale } from "./i18n.config.js";
-import { NextRequest } from "next/server";
+import { locales, defaultLocale } from "./i18n.config";
+import type { NextRequest } from "next/server";
 
 const intlMiddleware = createMiddleware({
   locales,
@@ -8,7 +8,7 @@ const intlMiddleware = createMiddleware({
   localePrefix: "always",
 });
 
-export default function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const response = intlMiddleware(request);
   if (!response) return;
 
