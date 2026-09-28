@@ -19,6 +19,7 @@ import QuickLinksSidebar from "@/components/sections/QuickLinksSidebar";
 import { getLocaleSeo, getLocaleUrl, siteName, siteUrl } from "@/lib/seo";
 import { locales, type Locale } from "@/i18n.config";
 import Script from "next/script";
+import { notFound } from "next/navigation";
 
 // Section order per 01-design.md §5 (v2, MOE-reference update).
 // Leadership sections (Commissioner General / Additional Commissioners) and
@@ -31,6 +32,8 @@ export default async function HomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  if (!locales.includes(locale as Locale)) notFound();
+
   const typedLocale = locale as Locale;
   setRequestLocale(locale);
 
