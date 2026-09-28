@@ -26,7 +26,9 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-3xl sm:text-4xl font-bold leading-tight">{t("headline")}</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold leading-tight">
+            {t("headline")}
+          </h1>
           <p className="mt-4 text-white/85 max-w-md">{t("subheadline")}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button href="#download-archive" variant="secondary">
@@ -48,6 +50,7 @@ export default function Hero() {
             src="/images/hero/top-banner.png"
             alt="EPD"
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"
             priority
           />

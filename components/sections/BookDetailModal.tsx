@@ -20,9 +20,17 @@ export default function BookDetailModal({
       {book && (
         <div>
           <div className="relative h-40 w-28 mx-auto rounded overflow-hidden bg-gray-100 mb-4">
-            <Image src={book.cover} alt={book.title} fill className="object-cover" />
+            <Image
+              src={book.cover}
+              alt={book.title}
+              fill
+              sizes="112px"
+              className="object-cover"
+            />
           </div>
-          <h3 className="font-semibold text-lg text-center text-gray-900 mb-4">{book.title}</h3>
+          <h3 className="font-semibold text-lg text-center text-gray-900 mb-4">
+            {book.title}
+          </h3>
           <dl className="space-y-2 text-sm">
             <div className="flex justify-between">
               <dt className="text-gray-400">{t("author")}</dt>

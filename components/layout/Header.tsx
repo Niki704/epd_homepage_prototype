@@ -32,6 +32,7 @@ export default function Header() {
             width={751}
             height={102}
             sizes="(max-width: 1024px) 75vw, 360px"
+            loading="eager"
             className="h-auto w-[min(75vw,360px)]"
           />
         </Link>
