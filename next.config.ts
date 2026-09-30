@@ -6,6 +6,7 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  allowedDevOrigins: ["10.47.179.148"],
   images: {
     // All images are served locally from /public per the architecture decision
     // (no cloud storage / remote image domains needed for the prototype).
