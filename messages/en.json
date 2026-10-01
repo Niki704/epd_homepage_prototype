@@ -22,9 +22,12 @@
     "ctaPrimary": "Browse Book Archive",
     "ctaSecondary": "About EPD"
   },
-  "disclaimer": {
-    "text": "Frontend-only prototype — not a live data platform.",
-    "dismiss": "Dismiss"
+  "cookiebanner": {
+    "heading": "Cookies are safe with us",
+    "text": "We use cookies to improve your experience on the Educational Publications Department website.",
+    "accept": "Accept Cookies",
+    "reject": "Reject",
+    "close": "Close cookie banner"
   },
   "bookCategories": {
     "title": "Book Categories",

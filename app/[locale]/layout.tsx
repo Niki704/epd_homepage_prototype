@@ -14,6 +14,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AccessibilityWidget from "@/components/layout/AccessibilityWidget";
 import ScrollToTopButton from "@/components/layout/ScrollToTopButton";
+import CookieConsentBanner from "@/components/sections/CookieConsentBanner";
 import {
   getAlternateLocaleUrls,
   getLocaleSeo,
@@ -136,6 +137,7 @@ export default async function LocaleLayout({
             <Footer />
             <AccessibilityWidget />
             <ScrollToTopButton />
+            <CookieConsentBanner />
           </ThemeProvider>
         </NextIntlClientProvider>
       </div>
