@@ -1,5 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 import Hero from "@/components/sections/Hero";
+import EpdQuickLinks from "@/components/sections/EpdQuickLinks";
+import EpdHighlights from "@/components/sections/EpdHighlights";
 import DisclaimerBanner from "@/components/sections/DisclaimerBanner";
 import BookCategoryGrid from "@/components/sections/BookCategoryGrid";
 import QuickServiceTiles from "@/components/sections/QuickServiceTiles";
@@ -86,6 +88,8 @@ export default async function HomePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <Hero />
+      <EpdQuickLinks />
+      <EpdHighlights />
       <DisclaimerBanner />
       <BookCategoryGrid />
       <QuickServiceTiles />

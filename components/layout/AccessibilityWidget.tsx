@@ -1,12 +1,23 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 // Floating circular accessibility button, bottom-right (MOE pattern).
 // Prototype stub: wire up real font-size/contrast controls during build-out.
 export default function AccessibilityWidget() {
   const t = useTranslations("accessibility");
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 200);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) return null;
 
   return (
     <button
