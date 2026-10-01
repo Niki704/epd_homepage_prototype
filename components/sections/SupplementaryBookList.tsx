@@ -25,12 +25,22 @@ export default function SupplementaryBookList() {
             className="text-left bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow"
           >
             <div className="relative aspect-[3/4] bg-gray-100">
-              <Image src={book.cover} alt={book.title} fill className="object-cover" />
+              <Image
+                src={book.cover}
+                alt={book.title}
+                fill
+                sizes="(max-width: 639px) 50vw, (max-width: 1023px) 33vw, 25vw"
+                className="object-cover"
+              />
             </div>
             <div className="p-3">
-              <p className="text-sm font-medium text-gray-800 line-clamp-2">{book.title}</p>
+              <p className="text-sm font-medium text-gray-800 line-clamp-2">
+                {book.title}
+              </p>
               <div className="flex items-center justify-between mt-2">
-                <span className="text-brand font-semibold text-sm">Rs. {book.price}</span>
+                <span className="text-brand font-semibold text-sm">
+                  Rs. {book.price}
+                </span>
                 <Badge tone={book.inStock ? "green" : "red"}>
                   {book.inStock ? t("inStock") : t("outOfStock")}
                 </Badge>

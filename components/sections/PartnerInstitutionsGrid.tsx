@@ -1,35 +1,53 @@
-import { useTranslations } from "next-intl";
+import Image from "next/image";
 
-// Card row of sister institutions (emblem + name) — MOE pattern
-// (01-design.md §4). Reinforces EPD's place in the education ecosystem,
-// mirroring how MOE's own homepage lists EPD as a partner.
 export default function PartnerInstitutionsGrid() {
-  const t = useTranslations("partners");
-
   const partners = [
-    "Ministry of Education",
-    "National Institute of Education",
-    "Dept. of Examinations",
-    "State Printing Corporation",
-    "National Education Commission",
-    "UNESCO National Commission",
+    {
+      name: "Education Commissions",
+      src: "/icons/education-commisions.png",
+    },
+    {
+      name: "Department of Examinations",
+      src: "/icons/examinations-2.png",
+    },
+    {
+      name: "National Institute of Education",
+      src: "/icons/nie.png",
+    },
+    {
+      name: "State Printing Corporation",
+      src: "/icons/state-printing.png",
+    },
   ];
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-14">
-      <h2 className="text-2xl font-bold text-brand mb-6 text-center">{t("title")}</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-        {partners.map((name) => (
-          <div
-            key={name}
-            className="bg-white border border-gray-100 rounded-xl p-4 flex flex-col items-center text-center gap-2 hover:shadow-md transition-shadow"
-          >
-            <div className="h-12 w-12 rounded-full bg-brand/10 flex items-center justify-center text-brand font-bold text-lg">
-              {name.charAt(0)}
+    <section
+      className="bg-white px-4 py-14 sm:py-16"
+      aria-labelledby="related-sites-title"
+    >
+      <div className="mx-auto max-w-6xl">
+        <h2
+          id="related-sites-title"
+          className="text-center text-3xl font-bold text-brand sm:text-4xl"
+        >
+          Related sites
+        </h2>
+        <div className="mt-10 grid grid-cols-2 items-center justify-items-center gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-x-10 lg:mt-12 lg:gap-x-14">
+          {partners.map((partner) => (
+            <div
+              key={partner.name}
+              className="flex h-24 w-full max-w-52 items-center justify-center px-3 transition-transform hover:scale-105"
+            >
+              <Image
+                src={partner.src}
+                alt={partner.name}
+                width={220}
+                height={96}
+                className="h-full w-full object-contain"
+              />
             </div>
-            <p className="text-xs text-gray-600 leading-tight">{name}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
