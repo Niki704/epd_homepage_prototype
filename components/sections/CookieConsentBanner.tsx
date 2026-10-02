@@ -4,29 +4,32 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
+import {
+  getConsent,
+  setConsent as persistConsent,
+  type ConsentChoice,
+} from "@/lib/cookies/consent";
 
-const CONSENT_STORAGE_KEY = "epd-cookie-consent-v1";
-
-type ConsentChoice = "accepted" | "rejected" | "undecided";
+type ConsentState = ConsentChoice | "undecided";
 
 export default function CookieConsentBanner() {
   const t = useTranslations("cookiebanner");
-  const [consent, setConsent] = useState<ConsentChoice | null>(null);
+  const [consent, setConsentState] = useState<ConsentState | null>(null);
 
   useEffect(() => {
-    const storedConsent = window.localStorage.getItem(CONSENT_STORAGE_KEY);
+    const storedConsent = getConsent();
 
-    if (storedConsent === "accepted" || storedConsent === "rejected") {
-      setConsent(storedConsent);
+    if (storedConsent) {
+      setConsentState(storedConsent);
       return;
     }
 
-    setConsent("undecided");
+    setConsentState("undecided");
   }, []);
 
   const chooseConsent = (choice: Exclude<ConsentChoice, "undecided">) => {
-    window.localStorage.setItem(CONSENT_STORAGE_KEY, choice);
-    setConsent(choice);
+    persistConsent(choice);
+    setConsentState(choice);
   };
 
   return (
@@ -36,7 +39,7 @@ export default function CookieConsentBanner() {
           role="region"
           aria-labelledby="cookie-banner-title"
           initial={{ opacity: 0, x: "100%" }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
           exit={{
             opacity: 0,
             x: "100%",
