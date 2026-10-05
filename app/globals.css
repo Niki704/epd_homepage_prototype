@@ -95,3 +95,82 @@ body {
 .nav-link-underline:focus-visible::after {
   transform: scaleX(1);
 }
+
+.utility-contacts {
+  grid-template-columns: max-content max-content;
+  column-gap: 1rem;
+}
+
+.utility-contact-sizer {
+  display: flex;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  column-gap: 1rem;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.utility-contact {
+  display: inline-flex;
+  grid-row: 1;
+  perspective: 24rem;
+}
+
+.utility-contact-phone {
+  grid-column: 1;
+}
+
+.utility-contact-email {
+  grid-column: 2;
+}
+
+.utility-contact-active {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  z-index: 1;
+  justify-self: stretch;
+}
+
+.utility-contact:not(.utility-contact-active):has(~ .utility-contact-active),
+.utility-contact-active ~ .utility-contact:not(.utility-contact-active) {
+  visibility: hidden;
+}
+
+.utility-contact:focus-visible {
+  outline: 0.125rem solid var(--color-whiteFeather);
+  outline-offset: 0.125rem;
+}
+
+.utility-contact-inner {
+  position: relative;
+  display: inline-grid;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 300ms ease-out;
+}
+
+.utility-contact:not(.utility-contact-active) .utility-contact-inner {
+  width: max-content;
+}
+
+.utility-contact-active .utility-contact-inner {
+  transform: rotateX(180deg);
+}
+
+.utility-contact-face {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+}
+
+.utility-contact-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.utility-contact-back {
+  transform: rotateX(180deg);
+}

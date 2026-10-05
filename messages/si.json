@@ -2,6 +2,8 @@
   "utilityBar": {
     "phone": "+94 112 784 815",
     "email": "epditunit@gmail.com",
+    "hotline": "දුරකථන අංකය",
+    "ourEmail": "විද්‍යුත් තැපෑල",
     "siteMap": "අඩවි සිතියම"
   },
   "nav": {
@@ -13,6 +15,7 @@
     "bookshops": "පොත් වෙළඳසැල්",
     "afwebs": "අනුබද්ධ වෙබ්සයිට්",
     "contact": "සම්බන්ධ වන්න",
+    "searchArchive": "පොත් සොයන්න",
     "siteMap": "අඩවි සිතියම"
   },
   "hero": {
