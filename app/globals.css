@@ -203,6 +203,7 @@ body {
 
 .utility-contact-back {
   position: absolute;
+  grid-area: auto;
   inset: 0;
   display: flex;
   align-items: center;
@@ -225,12 +226,12 @@ body {
    plays "exit" (which swaps the roles back). */
 .utility-contact-inner[data-phase="enter"] .utility-contact-front,
 .utility-contact-inner[data-phase="exit"] .utility-contact-back {
-  animation: utility-slide-out var(--utility-swap-duration) var(--utility-swap-ease) both;
+  animation: utility-slide-out var(--utility-swap-duration) var(--utility-swap-ease) backwards;
 }
 
 .utility-contact-inner[data-phase="enter"] .utility-contact-back,
 .utility-contact-inner[data-phase="exit"] .utility-contact-front {
-  animation: utility-slide-in var(--utility-swap-duration) var(--utility-swap-ease) both;
+  animation: utility-slide-in var(--utility-swap-duration) var(--utility-swap-ease) backwards;
 }
 
 /* Movement runs for the full duration, but the opacity change finishes by the
