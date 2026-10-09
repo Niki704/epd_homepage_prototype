@@ -22,7 +22,15 @@
     "headline": "Educational Publications Department",
     "subheadline": "Publishing quality educational resources for every Sri Lankan classroom",
     "ctaPrimary": "Browse Book Archive",
-    "ctaSecondary": "About EPD"
+    "ctaSecondary": "About EPD",
+    "quickDownload": "Download Books",
+    "quickNotices": "Notices",
+    "quickContact": "Contact Us",
+    "established": "Est. 1985",
+    "slideLabel": "Show slide {number}",
+    "pauseSlides": "Pause slideshow",
+    "playSlides": "Play slideshow",
+    "opensInNewTab": "(opens in a new tab)"
   },
   "cookiebanner": {
     "heading": "Cookies are safe with us",

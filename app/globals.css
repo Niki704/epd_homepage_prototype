@@ -269,6 +269,28 @@ body {
   }
 }
 
+/* Hero rise animation */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+}
+
+.hero-rise {
+  animation: hero-rise 500ms ease-out backwards;
+}
+
+.hero-rise-delayed {
+  animation-delay: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise {
+    animation: none;
+  }
+}
+
 /* Reduced motion: keep the swap, drop the movement (plain cross-fade). */
 @media (prefers-reduced-motion: reduce) {
   .utility-contact-inner {
