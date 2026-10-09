@@ -25,7 +25,8 @@
   /* Header-specific accents — lighter shades tuned for the dark banner
      photo backdrop, distinct from the light-surface accent-gold/violet
      used everywhere else on the white background. */
-  --color-accent-gold-light: #f2c14e; /* Version badge */
+  --color-accent-gold-light: #f2c14e;
+  /* Version badge */
   --color-accent-purple: #a855f7;
 
   /* White variants */
@@ -54,11 +55,9 @@ body {
     sans-serif;
   letter-spacing: 0.01em;
   color: transparent;
-  background-image: linear-gradient(
-    to right,
-    var(--color-toputilbg) 50%,
-    #ffffff 50%
-  );
+  background-image: linear-gradient(to right,
+      var(--color-toputilbg) 50%,
+      #ffffff 50%);
   background-position: 100% 0;
   background-size: 200% 100%;
   background-clip: text;
@@ -94,4 +93,207 @@ body {
 .nav-link-underline:hover::after,
 .nav-link-underline:focus-visible::after {
   transform: scaleX(1);
+}
+
+/* ------------------------------------------------------------------ */
+/* Top utility bar: Hotline / Email directional slide-swap             */
+/*                                                                    */
+/* Grid architecture (unchanged):                                      */
+/*  - .utility-contacts is a 2-column grid                             */
+/*  - .utility-contact-sizer is a hidden row-spanning item that        */
+/*    reserves the width of both labels                                */
+/*  - the active anchor stretches across both columns                  */
+/*  - front/back faces are stacked in the same grid cell (1 / 1)       */
+/* ------------------------------------------------------------------ */
+
+.utility-contacts {
+  grid-template-columns: max-content max-content;
+  column-gap: 1rem;
+}
+
+.utility-contact-sizer {
+  display: flex;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  column-gap: 1rem;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.utility-contact {
+  display: inline-flex;
+  grid-row: 1;
+}
+
+.utility-contact-phone {
+  grid-column: 1;
+}
+
+.utility-contact-email {
+  grid-column: 2;
+}
+
+.utility-contact-active {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  z-index: 1;
+  justify-self: stretch;
+}
+
+.utility-contact:not(.utility-contact-active):has(~ .utility-contact-active),
+.utility-contact-active~.utility-contact:not(.utility-contact-active) {
+  visibility: hidden;
+}
+
+.utility-contact:focus-visible {
+  outline: 0.125rem solid var(--color-whiteFeather);
+  outline-offset: 0.125rem;
+}
+
+.utility-contact-inner {
+  /* Motion tuning */
+  --utility-swap-duration: 140ms;
+  --utility-swap-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --utility-slide-y: 100%;
+  /* push distance, relative to the text's height */
+  --utility-clip-pad: 0.25em;
+  /* breathing room so tall Sinhala/Tamil glyphs aren't cut */
+
+  /* Push direction, set from data-push: -1 = up, 1 = down. */
+  --push-y: -1;
+
+  position: relative;
+  display: inline-grid;
+  width: 100%;
+  /* Clip vertically only, so the slide reads as a mask, while a long value
+     (e.g. an email address) is never cut off sideways. */
+  overflow-x: visible;
+  overflow-y: clip;
+  padding-block: var(--utility-clip-pad);
+  margin-block: calc(var(--utility-clip-pad) * -1);
+}
+
+.utility-contact:not(.utility-contact-active) .utility-contact-inner {
+  width: max-content;
+}
+
+.utility-contact-inner[data-push="up"] {
+  --push-y: -1;
+}
+
+.utility-contact-inner[data-push="down"] {
+  --push-y: 1;
+}
+
+/* Two-stack: both faces share grid cell 1 / 1. */
+.utility-contact-face {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+
+.utility-contact-front {
+  opacity: 1;
+}
+
+/* The email label sits in column 2. When its anchor stretches across both
+   columns, pin the label to the end so it doesn't jump into column 1. */
+.utility-contact-email .utility-contact-front {
+  justify-self: end;
+}
+
+.utility-contact-back {
+  position: absolute;
+  grid-area: auto;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Resting state while the value is shown. */
+.utility-contact-inner[data-phase="enter"] .utility-contact-front {
+  opacity: 0;
+}
+
+.utility-contact-inner[data-phase="enter"] .utility-contact-back {
+  opacity: 1;
+}
+
+/* The outgoing face slides out along the push vector, the incoming face
+   slides in from the opposite side. Hover-in plays "enter", hover-out
+   plays "exit" (which swaps the roles back). */
+.utility-contact-inner[data-phase="enter"] .utility-contact-front,
+.utility-contact-inner[data-phase="exit"] .utility-contact-back {
+  animation: utility-slide-out var(--utility-swap-duration) var(--utility-swap-ease) backwards;
+}
+
+.utility-contact-inner[data-phase="enter"] .utility-contact-back,
+.utility-contact-inner[data-phase="exit"] .utility-contact-front {
+  animation: utility-slide-in var(--utility-swap-duration) var(--utility-swap-ease) backwards;
+}
+
+/* Movement runs for the full duration, but the opacity change finishes by the
+   halfway point. That way the incoming text is already readable while it is
+   still settling, instead of fading in right at the end. */
+@keyframes utility-slide-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(calc(var(--push-y) * var(--utility-slide-y)));
+  }
+}
+
+@keyframes utility-slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(var(--push-y) * var(--utility-slide-y) * -1));
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero rise animation */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+}
+
+.hero-rise {
+  animation: hero-rise 500ms ease-out backwards;
+}
+
+.hero-rise-delayed {
+  animation-delay: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise {
+    animation: none;
+  }
+}
+
+/* Reduced motion: keep the swap, drop the movement (plain cross-fade). */
+@media (prefers-reduced-motion: reduce) {
+  .utility-contact-inner {
+    --utility-slide-y: 0%;
+  }
 }

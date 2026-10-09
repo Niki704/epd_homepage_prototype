@@ -1,6 +1,6 @@
 {
   "name": "epd_homepage_prototype",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -16,7 +16,7 @@
     "lucide-react": "^1.41.0",
     "next": "^16.3.6",
     "next-intl": "^4.14.6",
-    "next-themes": "^0.3.0",
+    "next-themes": "^0.4.6",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "zod": "^3.25.76"

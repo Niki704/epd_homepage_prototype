@@ -35,8 +35,12 @@ export default function StatsCounter() {
     todayViews: 0,
   });
   const [loaded, setLoaded] = useState(false);
+  const hasRecordedView = useRef(false);
 
   useEffect(() => {
+    if (hasRecordedView.current) return;
+    hasRecordedView.current = true;
+
     // Increments the view counters, then reads back the fresh totals.
     fetch("/api/counters/views", { method: "POST" })
       .then((res) => (res.ok ? res.json() : null))

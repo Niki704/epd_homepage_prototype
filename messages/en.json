@@ -2,6 +2,8 @@
   "utilityBar": {
     "phone": "+94 112 784 815",
     "email": "epditunit@gmail.com",
+    "hotline": "Hotline",
+    "ourEmail": "Email Us",
     "siteMap": "Site Map"
   },
   "nav": {
@@ -20,11 +22,22 @@
     "headline": "Educational Publications Department",
     "subheadline": "Publishing quality educational resources for every Sri Lankan classroom",
     "ctaPrimary": "Browse Book Archive",
-    "ctaSecondary": "About EPD"
+    "ctaSecondary": "About EPD",
+    "quickDownload": "Download Books",
+    "quickNotices": "Notices",
+    "quickContact": "Contact Us",
+    "established": "Est. 1985",
+    "slideLabel": "Show slide {number}",
+    "pauseSlides": "Pause slideshow",
+    "playSlides": "Play slideshow",
+    "opensInNewTab": "(opens in a new tab)"
   },
-  "disclaimer": {
-    "text": "Frontend-only prototype — not a live data platform.",
-    "dismiss": "Dismiss"
+  "cookiebanner": {
+    "heading": "Cookies are safe with us",
+    "text": "We use cookies to improve your experience on the Educational Publications Department website.",
+    "accept": "Accept Cookies",
+    "reject": "Reject",
+    "close": "Close cookie banner"
   },
   "bookCategories": {
     "title": "Book Categories",
