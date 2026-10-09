@@ -64,13 +64,13 @@ export default function CookieConsentBanner() {
           }}
           className="fixed inset-0 m-0 size-full max-h-none max-w-none overflow-hidden border-0 bg-transparent p-0 backdrop:bg-transparent focus:outline-none"
         >
-          <motion.div
+          <div
             aria-hidden="true"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="absolute inset-0 bg-black/40"
+            className={`absolute inset-0 bg-black/40 transition-opacity motion-reduce:transition-none ${
+              isOpen
+                ? "opacity-100 duration-300 ease-out starting:opacity-0"
+                : "opacity-0 delay-100 duration-300 ease-in-out"
+            }`}
           />
           <motion.div
             initial={{ opacity: 0, x: slideX }}
@@ -78,9 +78,9 @@ export default function CookieConsentBanner() {
             exit={{
               opacity: 0,
               x: slideX,
-              transition: { duration: 0.25, ease: "easeIn" },
+              transition: { duration: 0.4, ease: "easeIn" },
             }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
             className="absolute bottom-14 right-4 w-[calc(100%-2rem)] max-w-md rounded border border-brand bg-white p-5 text-gray-900 shadow-2xl sm:right-5 sm:p-6"
           >
             <button
@@ -98,18 +98,18 @@ export default function CookieConsentBanner() {
               {t("heading")}
             </h2>
             <p className="mt-3 text-sm leading-6 text-gray-700">{t("text")}</p>
-            <div className="mt-5 flex flex-wrap gap-5">
+            <div className="mt-5 flex flex-wrap gap-3">
               <button
                 type="button"
                 onClick={() => chooseConsent("accepted")}
-                className="min-h-11 cursor-pointer border border-brand bg-brand px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-brand-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                className="min-h-11 flex-1 cursor-pointer rounded-md border border-brand bg-brand px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:flex-none"
               >
                 {t("accept")}
               </button>
               <button
                 type="button"
                 onClick={() => chooseConsent("rejected")}
-                className="min-h-11 cursor-pointer border-0 bg-transparent px-0 py-2 text-sm font-bold text-brand transition-colors hover:text-brand-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                className="min-h-11 flex-1 cursor-pointer rounded-md border border-brand bg-white px-4 py-2 text-sm font-semibold text-brand transition-colors hover:bg-brand/10 active:bg-brand/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:flex-none"
               >
                 {t("reject")}
               </button>
